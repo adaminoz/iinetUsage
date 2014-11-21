@@ -98,6 +98,8 @@ private void grabData(String uri) {
 
     public void onLoginClick(View view) {
 
+        userdetails();
+
         grabData(url);
 
         updateDisplay();
@@ -125,9 +127,9 @@ protected void  updateDisplay() {
 
 protected void userdetails() {
 
-    etUsername = etUsername.getText().toString();
+        username = etUsername.getText().toString();
 
-    etPassword = etPassword.getText().toString();
+        password = etPassword.getText().toString();
 
 
     }
