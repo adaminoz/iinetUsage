@@ -10,5 +10,6 @@
     <string name="tvRawJsonLogin">RawJSON</string>
     <string name="tvPasswordData">tvPasswordData</string>
     <string name="tvUsernameData">tvUsernameData</string>
+    <string name="tvStoken">Service token</string>
 
 </resources>

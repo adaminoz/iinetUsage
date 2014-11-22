@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,11 +21,11 @@ import www.theclaimapp.com.iinetusage.Parser.JSONParseUserCreds;
 
 public class MainActivity extends ActionBarActivity {
 
-    TextView username;
-    TextView password;
-    Button login;
-    //String url = "https://toolbox.iinet.net.au/cgi-bin/api.cgi?";
+
+    //Button login;
     String url = "https://toolbox.iinet.net.au/cgi-bin/api.cgi?";
+    String username;
+    String password;
 
 
     EditText etUsername;
@@ -35,9 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
     //testing data
     TextView rawJson;
-    TextView rawUsername;
-    TextView rawPassword;
-
+    TextView sToken;
 
 
     //list views to grab data
@@ -58,8 +55,7 @@ public class MainActivity extends ActionBarActivity {
 
         //testing data
         rawJson = (TextView) findViewById(R.id.tvRawJSON);
-        rawUsername = (TextView) findViewById(R.id.tvUsernameData);
-        rawPassword = (TextView) findViewById(R.id.tvPasswordData);
+        sToken = (TextView) findViewById(R.id.tvStoken);
 
 
         tasks = new ArrayList<>();
@@ -98,9 +94,13 @@ private void grabData(String uri) {
 
     public void onLoginClick(View view) {
 
-        userdetails();
 
-        grabData(url);
+
+        getuserdetails();
+
+        String loginurl = (url  + "_USERNAME=" + username + "&_PASSWORD=" + password);
+
+        grabData(loginurl);
 
         updateDisplay();
 
@@ -111,28 +111,30 @@ private void grabData(String uri) {
 
 protected void  updateDisplay() {
 
+
     //   rawJson.setText(token);
 
     if (userCredsList != null) {
         for (UserCreds userCreds : userCredsList) {
    //         rawJson.append(userCreds.token);
             rawJson.setText(userCreds.token);
-            rawUsername.setText(userCreds.username);
-            rawPassword.setText(userCreds.password);
 
         }
 
     }
 }
 
-protected void userdetails() {
+protected void getuserdetails() {
 
-        username = etUsername.getText().toString();
+    username = etUsername.getText().toString();
 
-        password = etPassword.getText().toString();
+    password = etPassword.getText().toString();
 
 
-    }
+
+
+
+}
 
 
 

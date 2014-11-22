@@ -18,9 +18,9 @@ public class JSONParseUserCreds {
 
             JSONObject obj = new JSONObject(content);
 
-            JSONObject response = obj.getJSONObject("response");
+ //           JSONObject response = obj.getJSONObject("response");
 
-            JSONObject service_list = response.getJSONObject("service_list");
+  //          JSONObject service_list = response.getJSONObject("service_list");
 
             //Gat Auth Token.
             UserCreds userCreds = new UserCreds();
