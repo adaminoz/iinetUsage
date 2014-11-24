@@ -5,8 +5,8 @@ package www.theclaimapp.com.iinetusage.Model;
  */
 public class UserCreds {
 
-    public String username;
-    public String password;
+ //   public String username;
+  //  public String password;
     public String token;
 
 }

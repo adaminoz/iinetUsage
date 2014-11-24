@@ -1,6 +1,7 @@
 package www.theclaimapp.com.iinetusage;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
     String url = "https://toolbox.iinet.net.au/cgi-bin/api.cgi?";
     String username;
     String password;
+    CheckBox cbSaveDetails;
 
 
     EditText etUsername;
@@ -50,8 +53,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        cbSaveDetails = (CheckBox) findViewById(R.id.cbRememberLogin);
 
         //testing data
         rawJson = (TextView) findViewById(R.id.tvRawJSON);
@@ -59,6 +65,8 @@ public class MainActivity extends ActionBarActivity {
 
 
         tasks = new ArrayList<>();
+
+        loadSavedPrefs();
 
     }
 
@@ -95,14 +103,13 @@ private void grabData(String uri) {
     public void onLoginClick(View view) {
 
 
+            getuserdetails();
 
-        getuserdetails();
+            String loginurl = (url + "_USERNAME=" + username + "&_PASSWORD=" + password);
 
-        String loginurl = (url  + "_USERNAME=" + username + "&_PASSWORD=" + password);
+            grabData(loginurl);
 
-        grabData(loginurl);
-
-        updateDisplay();
+            updateDisplay();
 
 
 //        Intent loginIntent = new Intent(this, UsageData.class);
@@ -126,16 +133,35 @@ protected void  updateDisplay() {
 
 protected void getuserdetails() {
 
-    username = etUsername.getText().toString();
-
-    password = etPassword.getText().toString();
 
 
+    //if(cbSaveDetails.isChecked()) {
 
+    //Save shared prefs
+    if(cbSaveDetails.isChecked()) {
+        SharedPreferences userDetails = getSharedPreferences("MYPREFS", 0);
 
+        //set username to etUsername and password to etPassword
+        SharedPreferences.Editor editor = userDetails.edit();
+        editor.putString("username", etUsername.getText().toString());
+        editor.putString("password", etPassword.getText().toString());
+        editor.apply();
 
+    }
+        username = etUsername.getText().toString();
+
+        password = etPassword.getText().toString();
 }
 
+
+    protected void loadSavedPrefs() {
+
+        SharedPreferences userDetails = getSharedPreferences("MYPREFS", 0);
+
+        etUsername.setText(userDetails.getString("username", ""));
+        etPassword.setText(userDetails.getString("password", ""));
+
+        }
 
 
     protected boolean isOnline() {

@@ -11,5 +11,6 @@
     <string name="tvPasswordData">tvPasswordData</string>
     <string name="tvUsernameData">tvUsernameData</string>
     <string name="tvStoken">Service token</string>
+    <string name="cbRememberLogin">Remember Login Details</string>
 
 </resources>
