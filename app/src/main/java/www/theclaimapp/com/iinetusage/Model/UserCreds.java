@@ -8,5 +8,6 @@ public class UserCreds {
  //   public String username;
   //  public String password;
     public String token;
+    public String sToken;
 
 }

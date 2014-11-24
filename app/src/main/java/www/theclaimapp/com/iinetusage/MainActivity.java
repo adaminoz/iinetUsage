@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
 
     //Button login;
     String url = "https://toolbox.iinet.net.au/cgi-bin/api.cgi?";
-    String username;
+    public static String username;
     String password;
     CheckBox cbSaveDetails;
 
@@ -111,9 +111,8 @@ private void grabData(String uri) {
 
             updateDisplay();
 
-
-//        Intent loginIntent = new Intent(this, UsageData.class);
-//        startActivity(loginIntent);
+   //     Intent loginIntent = new Intent(this, UsageData.class);
+  //      startActivity(loginIntent);
     }
 
 protected void  updateDisplay() {
@@ -125,6 +124,8 @@ protected void  updateDisplay() {
         for (UserCreds userCreds : userCredsList) {
    //         rawJson.append(userCreds.token);
             rawJson.setText(userCreds.token);
+            sToken.setText(userCreds.sToken);
+
 
         }
 
