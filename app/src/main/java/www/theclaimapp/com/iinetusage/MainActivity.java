@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import www.theclaimapp.com.iinetusage.Model.UserCreds;
 import www.theclaimapp.com.iinetusage.Parser.JSONParseUserCreds;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity{
 
 
     //Button login;
@@ -29,16 +30,19 @@ public class MainActivity extends ActionBarActivity {
     public static String username;
     String password;
     CheckBox cbSaveDetails;
-
+    ProgressBar pb;
 
     EditText etUsername;
     EditText etPassword;
 
+    String token;
+    String sToken;
+    String loginURL;
 
     //testing data
-    TextView rawJson;
-    TextView sToken;
-
+    TextView tvAuthToken;
+    TextView tvSToken;
+    TextView rawloginURL;
 
     //list views to grab data
     List<BgTask> tasks;
@@ -53,16 +57,15 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
         cbSaveDetails = (CheckBox) findViewById(R.id.cbRememberLogin);
+        pb = (ProgressBar) findViewById(R.id.progressBar);
 
         //testing data
-        rawJson = (TextView) findViewById(R.id.tvRawJSON);
-        sToken = (TextView) findViewById(R.id.tvStoken);
-
+        tvAuthToken = (TextView) findViewById(R.id.tvRawJSON);
+        tvSToken = (TextView) findViewById(R.id.tvStoken);
+        rawloginURL = (TextView) findViewById(R.id.loginURL);
 
         tasks = new ArrayList<>();
 
@@ -80,7 +83,6 @@ private void grabData(String uri) {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
 
         return true;
     }
@@ -102,35 +104,46 @@ private void grabData(String uri) {
 
     public void onLoginClick(View view) {
 
-
             getuserdetails();
 
-            String loginurl = (url + "_USERNAME=" + username + "&_PASSWORD=" + password);
+            String credsurl = (url + "_USERNAME=" + username + "&_PASSWORD=" + password);
 
-            grabData(loginurl);
+            grabData(credsurl);
 
-            updateDisplay();
+   //       loginURL = (url + "Usage&_TOKEN=" + token   + "&_SERVICE=" + sToken);
 
-   //     Intent loginIntent = new Intent(this, UsageData.class);
-  //      startActivity(loginIntent);
+        updateDisplay();
+
+
+  //   Intent loginIntent = new Intent(this, UsageActivity.class);
+    // loginIntent.putExtra("loginURL", loginURL);
+
+   //   startActivity(loginIntent);
     }
 
 protected void  updateDisplay() {
 
 
-    //   rawJson.setText(token);
+    //   tvAuthToken.setText(token);
 
     if (userCredsList != null) {
         for (UserCreds userCreds : userCredsList) {
-   //         rawJson.append(userCreds.token);
-            rawJson.setText(userCreds.token);
-            sToken.setText(userCreds.sToken);
 
+               tvAuthToken.setText(userCreds.getToken());
+               tvSToken.setText(userCreds.getS_token());
+
+
+
+
+           loginURL = url + "Usage&_TOKEN=" + userCreds.getToken() + "&_PASSWORD=" + userCreds.getS_token();
+
+           rawloginURL.setText(loginURL);
 
         }
 
     }
 }
+
 
 protected void getuserdetails() {
 
@@ -150,7 +163,6 @@ protected void getuserdetails() {
 
     }
         username = etUsername.getText().toString();
-
         password = etPassword.getText().toString();
 }
 
@@ -181,7 +193,7 @@ protected void getuserdetails() {
         protected void onPreExecute() {
           //  updateDisplay("Starting task");
             if (tasks.size() == 0) {
-    //            pb.setVisibility(View.VISIBLE);
+                pb.setVisibility(View.VISIBLE);
             }
             tasks.add(this);
      }
@@ -202,7 +214,7 @@ protected void getuserdetails() {
 
             tasks.remove(this);
             if (tasks.size() == 0) {
-                //              pb.setVisibility(View.INVISIBLE);
+                              pb.setVisibility(View.INVISIBLE);
             }
         }
         }

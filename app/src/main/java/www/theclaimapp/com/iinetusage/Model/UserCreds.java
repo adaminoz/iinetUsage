@@ -5,9 +5,22 @@ package www.theclaimapp.com.iinetusage.Model;
  */
 public class UserCreds {
 
- //   public String username;
-  //  public String password;
-    public String token;
-    public String sToken;
+    private String token;
+    private String s_token;
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getS_token() {
+        return s_token;
+    }
+
+    public void setS_token(String s_token) {
+        this.s_token = s_token;
+    }
 }

@@ -12,5 +12,7 @@
     <string name="tvUsernameData">tvUsernameData</string>
     <string name="tvStoken">Service token</string>
     <string name="cbRememberLogin">Remember Login Details</string>
+    <string name="tvUsageData">Data Passed from mainActivity</string>
+    <string name="loginURL">Login URL</string>
 
 </resources>

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UsageData"></activity>
+        <activity android:name=".UsageActivity"></activity>
     </application>
 
 </manifest>

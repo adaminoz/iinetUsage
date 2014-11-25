@@ -70,9 +70,9 @@
         android:layout_height="wrap_content"
         android:text="@string/tvStoken"
         android:id="@+id/tvStoken"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tvRawJSON"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp" />
+        android:layout_marginTop="23dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -83,5 +83,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loginURL"
+        android:id="@+id/loginURL"
+        android:layout_below="@+id/tvStoken"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_above="@+id/bLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>
