@@ -16,5 +16,14 @@
     <string name="loginURL">Login URL</string>
     <string name="tvName">Name</string>
     <string name="tvNameValue">Name Value</string>
+    <string name="tvMonthStart">New Month Starts</string>
+    <string name="tvIP">IP Address</string>
+    <string name="tvIPData"></string>
+    <string name="tvOnSince">Connected Since</string>
+    <string name="tvOnSinceData"></string>
+    <string name="tvDaysRemaining">Days Remaining</string>
+    <string name="tvDaysRemainingData"></string>
+    <string name="tvMonthStartData"></string>
+    <string name="tvDaysRemainingLabel">Days Remaining</string>
 
 </resources>

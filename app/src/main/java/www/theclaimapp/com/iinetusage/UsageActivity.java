@@ -10,8 +10,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import www.theclaimapp.com.iinetusage.Model.ConnectionData;
 import www.theclaimapp.com.iinetusage.Model.UsageData;
-import www.theclaimapp.com.iinetusage.Parser.JSONParseUsageData;
+import www.theclaimapp.com.iinetusage.Parser.JSONParseConnectionData;
 
 
 public class UsageActivity extends Activity{
@@ -22,11 +23,15 @@ public class UsageActivity extends Activity{
     String loginURL;
     TextView title;
 
-    TextView tvNameValue;
+    TextView anniversary;
+    TextView days_remaining;
+    TextView ip;
+    TextView on_since;
 
 
     List<BgTask> tasks;
     List<UsageData> usageDataList;
+    List<ConnectionData> conDataList;
 
 
 
@@ -34,9 +39,14 @@ public class UsageActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usagedata_activity);
-       
-        tvNameValue = (TextView) findViewById(R.id.tvNameValue);
+
         pb = (ProgressBar) findViewById(R.id.progressBar2);
+
+        anniversary = (TextView) findViewById(R.id.tvMonthStartData);
+        days_remaining = (TextView) findViewById(R.id.tvDaysRemaingData);
+        ip = (TextView) findViewById(R.id.tvIPData);
+        on_since = (TextView) findViewById(R.id.tvOnSinceData);
+
 
         tasks = new ArrayList<>();
 
@@ -48,15 +58,29 @@ public class UsageActivity extends Activity{
         BgTask task = new BgTask();
         task.execute(uri);
     }
-    protected void  updateDisplay() {
+   /* protected void  updateDisplay() {
 
 
         if ( usageDataList != null) {
             for (UsageData usageData : usageDataList) {
 
                 tvNameValue.setText(usageData.getName());
-
  }
+
+        }
+    }*/
+
+    protected void  updateConnectionDetails() {
+
+
+        if ( conDataList != null) {
+            for (ConnectionData connectionData : conDataList) {
+
+                ip.setText(connectionData.getIp());
+                on_since.setText(connectionData.getOn_since());
+       //         anniversary.setText(connectionData.getAnniversary());
+          //      days_remaining.setText(connectionData.getDays_remaining());
+            }
 
         }
     }
@@ -82,8 +106,8 @@ public class UsageActivity extends Activity{
         @Override
         protected void onPostExecute(String result) {
 
-            usageDataList = JSONParseUsageData.parseFeed(result);
-            updateDisplay();
+            conDataList= JSONParseConnectionData.parseFeed(result);
+            updateConnectionDetails();
 
            tasks.remove(this);
            if (tasks.size() == 0) {

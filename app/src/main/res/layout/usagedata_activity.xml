@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    >
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -13,21 +16,72 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tvName"
-        android:id="@+id/tvName"
-        android:layout_marginTop="55dp"
-        android:layout_alignParentTop="true"
+        android:text="@string/tvMonthStart"
+        android:id="@+id/tvMonthStartLabel"
+
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="59dp"
-        android:layout_marginStart="59dp" />
+        android:layout_marginTop="23dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tvNameValue"
-        android:id="@+id/tvNameValue"
-        android:layout_alignBottom="@+id/tvName"
-        android:layout_centerHorizontal="true" />
+        android:text="@string/tvMonthStartData"
+        android:id="@+id/tvMonthStartData"
+        android:layout_below="@+id/tvMonthStartLabel"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvIP"
+        android:id="@+id/tvIPLabel"
+        android:layout_below="@+id/tvMonthStartLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvIPData"
+        android:id="@+id/tvIPData"
+        android:layout_below="@+id/tvIPLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvOnSince"
+        android:id="@+id/tvOnSinceLabel"
+        android:layout_below="@+id/tvIPLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvOnSinceData"
+        android:id="@+id/tvOnSinceData"
+        android:layout_below="@+id/tvOnSinceLabel"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvDaysRemaining"
+        android:id="@+id/tvDaysRemaining"
+        android:layout_below="@+id/tvOnSinceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvDaysRemainingData"
+        android:id="@+id/tvDaysRemaingData"
+        android:layout_below="@+id/tvDaysRemaining"
+        />
 
 </RelativeLayout>
