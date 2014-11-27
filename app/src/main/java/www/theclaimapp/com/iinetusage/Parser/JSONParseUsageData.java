@@ -15,11 +15,10 @@ public class JSONParseUsageData {
     public static List<UsageData> parseFeed(String content) {
 
         try {
+            JSONObject obj = new JSONObject(content);
             List<UsageData> usageDataList = new ArrayList<>();
 
-            JSONObject obj = new JSONObject(content);
-
-           UsageData usageData = new UsageData();
+            UsageData usageData = new UsageData();
 
             JSONObject response = obj.getJSONObject("response");
 
@@ -27,10 +26,10 @@ public class JSONParseUsageData {
 
             JSONArray traffic_types = usage.getJSONArray("traffic_types");
 
-            String name = UsageData.name;
             for (int i = 0; i < traffic_types.length(); i++) {
+
                 JSONObject jObj = traffic_types.getJSONObject(i);
-                usageData.name = jObj.getString("name");
+                usageData.setName(jObj.getString("name"));
               }
 
             usageDataList.add(usageData);

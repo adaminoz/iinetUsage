@@ -5,9 +5,9 @@ package www.theclaimapp.com.iinetusage.Model;
  */
 public class UsageData {
 
-    public String used;
-    public static String name;
-    public String allocation;
+    private String used;
+    private String name;
+    private String allocation;
 
 
     public String getUsed() {

@@ -14,5 +14,7 @@
     <string name="cbRememberLogin">Remember Login Details</string>
     <string name="tvUsageData">Data Passed from mainActivity</string>
     <string name="loginURL">Login URL</string>
+    <string name="tvName">Name</string>
+    <string name="tvNameValue">Name Value</string>
 
 </resources>

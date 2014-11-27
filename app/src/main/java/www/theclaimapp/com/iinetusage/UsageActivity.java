@@ -7,31 +7,40 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import www.theclaimapp.com.iinetusage.Model.UsageData;
+import www.theclaimapp.com.iinetusage.Parser.JSONParseUsageData;
 
 
 public class UsageActivity extends Activity{
 
-    //String completeURL;
+
     TextView rawData;
     ProgressBar pb;
+    String loginURL;
+    TextView title;
 
-    TextView name;
+    TextView tvNameValue;
 
 
     List<BgTask> tasks;
     List<UsageData> usageDataList;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usagedata_activity);
-        name = (TextView) findViewById(R.id.tvUsageData);
+       
+        tvNameValue = (TextView) findViewById(R.id.tvNameValue);
+        pb = (ProgressBar) findViewById(R.id.progressBar2);
 
-        String loginURL = getIntent().getExtras().getString("loginURL");
+        tasks = new ArrayList<>();
+
+        loginURL = getIntent().getExtras().getString("loginURL");
         grabData(loginURL);
    }
 
@@ -42,25 +51,24 @@ public class UsageActivity extends Activity{
     protected void  updateDisplay() {
 
 
-        //   tvAuthToken.setText(token);
-
         if ( usageDataList != null) {
             for (UsageData usageData : usageDataList) {
 
-                name.setText(usageData.name);
+                tvNameValue.setText(usageData.getName());
+
  }
 
         }
     }
- private class BgTask extends AsyncTask<String, String, String> {
+    private class BgTask extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             //  updateDisplay("Starting task");
             if (tasks.size() == 0) {
-  //              pb.setVisibility(View.VISIBLE);
+                pb.setVisibility(View.VISIBLE);
             }
-           tasks.add(this);
+            tasks.add(this);
         }
 
         @Override
@@ -74,7 +82,7 @@ public class UsageActivity extends Activity{
         @Override
         protected void onPostExecute(String result) {
 
- //           userCredsList = JSONParseUserCreds.parseFeed(result);
+            usageDataList = JSONParseUsageData.parseFeed(result);
             updateDisplay();
 
            tasks.remove(this);

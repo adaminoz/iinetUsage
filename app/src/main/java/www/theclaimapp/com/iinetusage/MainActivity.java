@@ -1,6 +1,7 @@
 package www.theclaimapp.com.iinetusage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -47,7 +48,6 @@ public class MainActivity extends ActionBarActivity{
     //list views to grab data
     List<BgTask> tasks;
     List<UserCreds> userCredsList;
-
 
 
 
@@ -102,51 +102,52 @@ private void grabData(String uri) {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     public void onLoginClick(View view) {
 
-            getuserdetails();
+        getuserdetails();
 
-            String credsurl = (url + "_USERNAME=" + username + "&_PASSWORD=" + password);
+        String credsurl = (url + "_USERNAME=" + username + "&_PASSWORD=" + password);
 
-            grabData(credsurl);
-
-   //       loginURL = (url + "Usage&_TOKEN=" + token   + "&_SERVICE=" + sToken);
-
-        updateDisplay();
+        grabData(credsurl);
 
 
-  //   Intent loginIntent = new Intent(this, UsageActivity.class);
-    // loginIntent.putExtra("loginURL", loginURL);
 
-   //   startActivity(loginIntent);
     }
-
-protected void  updateDisplay() {
-
-
-    //   tvAuthToken.setText(token);
-
-    if (userCredsList != null) {
-        for (UserCreds userCreds : userCredsList) {
-
-               tvAuthToken.setText(userCreds.getToken());
-               tvSToken.setText(userCreds.getS_token());
+  //  public void onTestgo(View view) {
 
 
 
 
-           loginURL = url + "Usage&_TOKEN=" + userCreds.getToken() + "&_PASSWORD=" + userCreds.getS_token();
+    protected void  updateDisplay() {
 
-           rawloginURL.setText(loginURL);
 
+        if (userCredsList != null) {
+            for (UserCreds userCreds : userCredsList) {
+
+                tvAuthToken.setText(userCreds.getToken());
+
+                tvSToken.setText(userCreds.getS_token());
+
+      //          token = userCreds.getToken();
+      //          sToken = userCreds.getS_token();
+
+                loginURL = (url + "Usage&_TOKEN=" + userCreds.getToken() + "&_SERVICE=" + userCreds.getS_token());
+
+                rawloginURL.setText(loginURL);
+
+                Intent loginIntent = new Intent(this, UsageActivity.class);
+                loginIntent.putExtra("loginURL", loginURL);
+
+                startActivity(loginIntent);
+            }
         }
-
     }
-}
+
 
 
 protected void getuserdetails() {
-
 
 
     //if(cbSaveDetails.isChecked()) {
@@ -187,15 +188,16 @@ protected void getuserdetails() {
         }
     }
 
+
     private class BgTask extends AsyncTask<String, String, String> {
 
-        @Override
-        protected void onPreExecute() {
-          //  updateDisplay("Starting task");
-            if (tasks.size() == 0) {
-                pb.setVisibility(View.VISIBLE);
-            }
-            tasks.add(this);
+                @Override
+                protected void onPreExecute() {
+                    //  updateDisplay("Starting task");
+                    if (tasks.size() == 0) {
+                        pb.setVisibility(View.VISIBLE);
+                    }
+                    tasks.add(this);
      }
 
         @Override
@@ -214,7 +216,7 @@ protected void getuserdetails() {
 
             tasks.remove(this);
             if (tasks.size() == 0) {
-                              pb.setVisibility(View.INVISIBLE);
+            pb.setVisibility(View.INVISIBLE);
             }
         }
         }

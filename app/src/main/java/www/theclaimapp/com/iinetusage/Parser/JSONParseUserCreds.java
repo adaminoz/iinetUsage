@@ -37,7 +37,7 @@ public class JSONParseUserCreds {
 
                 JSONObject jObj = service_list.getJSONObject(i);
                 if(jObj.getString("pk_v").matches(username)) {
-               userCreds.setS_token(jObj.getString("s_token"));
+                userCreds.setS_token(jObj.getString("s_token"));
                 }
                 userCredsList.add(userCreds);
             }
