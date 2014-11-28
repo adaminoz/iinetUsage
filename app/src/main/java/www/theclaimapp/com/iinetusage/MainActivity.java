@@ -137,7 +137,7 @@ private void grabData(String uri) {
 
                 rawloginURL.setText(loginURL);
 
-                Intent loginIntent = new Intent(this, UsageActivity.class);
+                Intent loginIntent = new Intent(this, ConnectionDataActivity.class);
                 loginIntent.putExtra("loginURL", loginURL);
 
                 startActivity(loginIntent);

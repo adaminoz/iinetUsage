@@ -15,7 +15,7 @@ import www.theclaimapp.com.iinetusage.Model.UsageData;
 import www.theclaimapp.com.iinetusage.Parser.JSONParseConnectionData;
 
 
-public class UsageActivity extends Activity{
+public class ConnectionDataActivity extends Activity{
 
 
     TextView rawData;
@@ -78,8 +78,8 @@ public class UsageActivity extends Activity{
 
                 ip.setText(connectionData.getIp());
                 on_since.setText(connectionData.getOn_since());
-       //         anniversary.setText(connectionData.getAnniversary());
-          //      days_remaining.setText(connectionData.getDays_remaining());
+                anniversary.setText(connectionData.getAnniversary());
+                days_remaining.setText(connectionData.getDays_remaining());
             }
 
         }
