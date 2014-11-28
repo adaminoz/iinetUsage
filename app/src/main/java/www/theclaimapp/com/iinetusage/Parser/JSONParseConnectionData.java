@@ -22,6 +22,8 @@ public class JSONParseConnectionData {
 
             ConnectionData connectionData = new ConnectionData();
 
+
+
             JSONObject response = obj.getJSONObject("response");
 
             JSONObject quota_reset = response.getJSONObject("quota_reset");
@@ -36,10 +38,19 @@ public class JSONParseConnectionData {
                 connectionData.setIp(jObj.getString("ip"));
             }
 
+            JSONObject usageObj = response.getJSONObject("usage");
+            JSONArray trafficArray = usageObj.getJSONArray("traffic_types");
+
+            for (int i = 0; i < trafficArray.length(); i++) {
+                JSONObject uObj = trafficArray.getJSONObject(i);
+                if (uObj.getString("name").equals("peak")) {
+                    connectionData.setName(uObj.getString("name"));
+                    connectionData.setUsed(uObj.getString("used"));
+                }conDataList.add(connectionData);
+            }
 
 
-
-            conDataList.add(connectionData);
+           // conDataList.add(connectionData);
 
             return conDataList;
 

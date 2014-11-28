@@ -25,5 +25,8 @@
     <string name="tvDaysRemainingData"></string>
     <string name="tvMonthStartData"></string>
     <string name="tvDaysRemainingLabel">Days Remaining</string>
+    <string name="tvNamePeak">Name:</string>
+    <string name="tvNameUsage">Usage</string>
+    <string name="tvListUsage">List Usage</string>
 
 </resources>

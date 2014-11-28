@@ -27,6 +27,12 @@ public class ConnectionDataActivity extends Activity{
     TextView days_remaining;
     TextView ip;
     TextView on_since;
+    TextView peakUsage;
+    TextView peakName;
+
+    Double peakUsageMb;
+
+    TextView usageList;
 
 
     List<BgTask> tasks;
@@ -46,6 +52,10 @@ public class ConnectionDataActivity extends Activity{
         days_remaining = (TextView) findViewById(R.id.tvDaysRemaingData);
         ip = (TextView) findViewById(R.id.tvIPData);
         on_since = (TextView) findViewById(R.id.tvOnSinceData);
+        peakUsage = (TextView) findViewById(R.id.tvNameUsageData);
+        peakName = (TextView) findViewById(R.id.tvNamePeakData);
+
+
 
 
         tasks = new ArrayList<>();
@@ -58,18 +68,18 @@ public class ConnectionDataActivity extends Activity{
         BgTask task = new BgTask();
         task.execute(uri);
     }
-   /* protected void  updateDisplay() {
+  /*  protected void  updateDisplay() {
 
 
         if ( usageDataList != null) {
             for (UsageData usageData : usageDataList) {
 
-                tvNameValue.setText(usageData.getName());
+                peakName.setText(usageData.getName());
+                peakUsage.setText(usageData.getUsed());
  }
-
         }
-    }*/
-
+    }
+*/
     protected void  updateConnectionDetails() {
 
 
@@ -80,10 +90,15 @@ public class ConnectionDataActivity extends Activity{
                 on_since.setText(connectionData.getOn_since());
                 anniversary.setText(connectionData.getAnniversary());
                 days_remaining.setText(connectionData.getDays_remaining());
-            }
+                peakName.setText(connectionData.getName());
+                peakUsage.setText(connectionData.getUsed());
+
+               }
 
         }
     }
+
+
     private class BgTask extends AsyncTask<String, String, String> {
 
         @Override

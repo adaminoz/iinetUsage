@@ -1,14 +1,39 @@
 package www.theclaimapp.com.iinetusage.Model;
 
-/**
- * Created by aschickert on 27/11/2014.
- */
+
 public class ConnectionData {
 
     private String anniversary;
     private String days_remaining;
     private String ip;
     private String on_since;
+    private String used;
+    private String name;
+    private String allocation;
+
+
+    public String getUsed() {
+        return used;
+    }
+
+    public void setUsed(String used) {
+        this.used = used;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAllocation() {
+        return allocation;
+    }
+
+    public void setAllocation(String allocation) {
+        this.allocation = allocation;
+    }
 
 
     public String getAnniversary() {
@@ -42,4 +67,9 @@ public class ConnectionData {
     public void setOn_since(String on_since) {
         this.on_since = on_since;
     }
+
 }
+
+
+
+

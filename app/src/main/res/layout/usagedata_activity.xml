@@ -36,27 +36,27 @@
         android:layout_height="wrap_content"
         android:text="@string/tvIP"
         android:id="@+id/tvIPLabel"
-        android:layout_below="@+id/tvMonthStartLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_below="@+id/tvDaysRemaingData"
+        android:layout_alignLeft="@+id/progressBar2"
+        android:layout_alignStart="@+id/progressBar2"
+        android:layout_marginTop="34dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tvIPData"
         android:id="@+id/tvIPData"
-        android:layout_below="@+id/tvIPLabel" />
+        android:layout_below="@+id/tvIPLabel"
+        android:layout_alignLeft="@+id/tvIPLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tvOnSince"
         android:id="@+id/tvOnSinceLabel"
-        android:layout_below="@+id/tvIPLabel"
+        android:layout_alignTop="@+id/tvIPLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,10 +71,9 @@
         android:layout_height="wrap_content"
         android:text="@string/tvDaysRemaining"
         android:id="@+id/tvDaysRemaining"
-        android:layout_below="@+id/tvOnSinceLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignTop="@+id/tvMonthStartLabel"
+        android:layout_toRightOf="@+id/tvIPData"
+        android:layout_toEndOf="@+id/tvIPData" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,6 +81,42 @@
         android:text="@string/tvDaysRemainingData"
         android:id="@+id/tvDaysRemaingData"
         android:layout_below="@+id/tvDaysRemaining"
+        android:layout_alignLeft="@+id/tvDaysRemaining"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvNamePeak"
+        android:id="@+id/tvNamePeak"
+        android:layout_below="@+id/tvOnSinceData"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNamePeakData"
+        android:layout_below="@+id/tvNamePeak"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvNameUsage"
+        android:id="@+id/tvNameUsage"
+        android:layout_below="@+id/tvNamePeakData"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvNameUsageData"
+        android:layout_below="@+id/tvNameUsage"
+        android:layout_toRightOf="@+id/tvNamePeakData"
+        android:layout_toEndOf="@+id/tvNamePeakData" />
 
 </RelativeLayout>
